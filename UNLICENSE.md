@@ -141,15 +141,17 @@ license to make, have made, use, offer to sell, sell, import, transfer and
 otherwise run, modify and propagate the contents of this Work, where such
 license applies only to those patent claims, both currently owned or controlled
 by any of the Authors and acquired in the future, licensable by any of the
-AUthors that are necessarily infringed by this Work. This grant does not include
-claims that would be infringed only as a consequence of further modification of
-this implementation. If you or your agent or exclusive licensee institute or
-order or agree to the institution of patent litigation against any entity
-(including a cross-claim or counterclaim in a lawsuit) alleging that this Work
-or any Contribution incorporated within this Work constitutes direct or
-contributory patent infringement, or inducement of patent infringement, then any
-patent rights granted to you under this Grant of Patent Rights for the Work
-shall terminate as of the date such litigation is filed.
+Authors that are necessarily infringed by this Work.
+
+This grant does not include claims that would be infringed only as a consequence
+of further modification of this implementation. If you or your agent or
+exclusive licensee institute or order or agree to the institution of patent
+litigation against any entity (including a cross-claim or counterclaim in a
+lawsuit) alleging that this Work or any Contribution incorporated within this
+Work constitutes direct or contributory patent infringement, or inducement of
+patent infringement, then any patent rights granted to you under this Grant of
+Patent Rights for the Work shall terminate as of the date such litigation is
+filed.
 
 
 Limitations and Disclaimers
