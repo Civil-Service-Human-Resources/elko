@@ -1,5 +1,4 @@
-Elko UNLICENSE
-==============
+# Elko UNLICENSE
 
 In the spirit of contributing to the Public Domain, to the full extent possible
 under law, the Elko Authors ("The Authors"), as specified in the `AUTHORS.yaml`
@@ -22,9 +21,7 @@ could be used to explicitly specify that a file is covered by this UNLICENSE:
 All trademarks and registered trademarks mentioned in The Work are the property
 of their respective owners.
 
-
-Statement of Purpose
---------------------
+## Statement of Purpose
 
 The laws of most jurisdictions throughout the world automatically confer
 exclusive Copyright and Related Rights (defined below) upon the creator and
@@ -50,9 +47,7 @@ apply the UNLICENSE to the Work and publicly distribute the Work under its
 terms, with knowledge of their Copyright and Related Rights in the Work and the
 meaning and intended legal effect of the UNLICENSE on those rights.
 
-
-Definitions
------------
+## Definitions
 
 The term "distribute" has the same meaning here as under U.S. copyright law. A
 "Contribution" is the original Work, or any additions or changes to it.
@@ -83,9 +78,7 @@ Related Rights include, but are not limited to, the following:
 7. other similar, equivalent or corresponding rights throughout the world based
    on applicable law or treaty, and any national implementations thereof.
 
-
-Waiver
-------
+## Waiver
 
 To the greatest extent permitted by, but not in contravention of, applicable
 law, the Authors hereby overtly, fully, permanently, irrevocably and
@@ -105,9 +98,7 @@ termination, or any other legal or equitable action to disrupt the quiet
 enjoyment of the Work by the public as contemplated by the Authors' express
 Statement of Purpose.
 
-
-Public License Fallback
------------------------
+## Public License Fallback
 
 Should any part of the Waiver for any reason be judged legally invalid or
 ineffective under applicable law, then the Waiver shall be preserved to the
@@ -131,9 +122,7 @@ exercise any of their remaining Copyright and Related Rights in the Work or (ii)
 assert any associated claims and causes of action with respect to the Work, in
 either case contrary to their express Statement of Purpose.
 
-
-Grant of Patent Rights
-----------------------
+## Grant of Patent Rights
 
 The Authors hereby grant to You a perpetual, worldwide, non-exclusive,
 no-charge, royalty-free, irrevocable (except as stated in this section) patent
@@ -153,9 +142,7 @@ patent infringement, then any patent rights granted to you under this Grant of
 Patent Rights for the Work shall terminate as of the date such litigation is
 filed.
 
-
-Limitations and Disclaimers
----------------------------
+## Limitations and Disclaimers
 
 1. No trademark rights held by any of the Authors are waived, abandoned,
    surrendered, licensed or otherwise affected by this document.
@@ -181,9 +168,7 @@ Limitations and Disclaimers
    disclaim responsibility for obtaining any necessary consents, permissions or
    other rights required for any use of the Work.
 
-
-Appendix
---------
+## Appendix
 
 * The text of this document is derived from [Creative Commons CC0 1.0
   Universal] and the [Patent Grant] that ships with Google Go.
@@ -191,5 +176,5 @@ Appendix
 * This UNLICENSE is seen as a mere transitional requirement until international
   law adapts to the post intellectual property reality.
 
-[Creative Commons CC0 1.0 Universal]: https://creativecommons.org/publicdomain/zero/1.0/legalcode
-[Patent Grant]: https://github.com/golang/go/blob/master/PATENTS
+[creative commons cc0 1.0 universal]: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+[patent grant]: https://github.com/golang/go/blob/master/PATENTS
