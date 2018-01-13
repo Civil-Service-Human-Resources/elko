@@ -1,0 +1,13 @@
+#! /usr/bin/env bash
+
+# Public Domain (-) 2018-present, The Elko Authors.
+# See the Elko UNLICENSE file for details.
+
+go build -o elko github.com/tav/elko/cmd/elko
+touch -t 201801010000 elko
+tar cf elko.tar elko
+digest="$(shasum -a 512256 elko.tar | cut -f 1 -d ' ')"
+mkdir -p release
+mv elko.tar release/$digest.tar
+echo "darwin = '$digest'"
+cp elko /usr/local/bin/
