@@ -1,0 +1,67 @@
+// Public Domain (-) 2018-present, The Elko Authors.
+// See the Elko UNLICENSE file for details.
+
+syntax = "proto3";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+
+enum ErrorCode {
+  NONE = 0;
+  SERVICE_ERROR = 1;
+  SERVICE_NOT_FOUND = 2;
+  TIMEOUT = 3;
+}
+
+message ClientHeartbeat {
+}
+
+message ClientHello {
+  string serviceID = 1;
+  uint64 instanceID = 2;
+}
+
+message ClientRequest {
+  uint64 ID = 1;
+  bool async = 2;
+  string authToken = 3;
+  google.protobuf.Timestamp deadline = 4;
+  string traceID = 5;
+  string serviceID = 6;
+  string serviceMethod = 7;
+  bytes serviceParam = 8;
+}
+
+message ClientResponse {
+  string nodeID = 1;
+  uint64 instanceID = 2;
+  bytes message = 3;
+}
+
+message ClientShutdown {
+}
+
+message ServerHello {
+  google.protobuf.Duration heartbeat = 1;
+}
+
+message ServerRequest {
+  string nodeID = 1;
+  uint64 instanceID = 2;
+  bytes message = 3;
+}
+
+message ServerResponse {
+  uint64 ID = 1;
+  bytes result = 2;
+  ErrorCode errorCode = 3;
+  string errorType = 4;
+  string errorMessage = 5;
+}
+
+message ServerShutdown {
+}
+
+// <opcode><4-byte-length><message><hash-of-prev-3-elements>
+// service key: sha(<service-name>)
+// node key: sha(<node-id>)
