@@ -1,0 +1,14 @@
+#! /usr/bin/env bash
+
+# Public Domain (-) 2018-present, The Elko Authors.
+# See the Elko UNLICENSE file for details.
+
+cd pkg/servicemanager
+rm -rf protocol
+mkdir protocol
+protoc -I ../../proto --go_out=protocol protocol.proto
+
+cd ../..
+mkdir -p runtime/nodejs/node_modules/elkoprotocol
+./runtime/nodejs/node_modules/.bin/pbjs proto/protocol.proto -t static-module -w commonjs --force-long > runtime/nodejs/node_modules/elkoprotocol/index.js
+cat runtime/nodejs/node_modules/elkoprotocol/index.js | ./runtime/nodejs/node_modules/.bin/pbts - > runtime/nodejs/node_modules/elkoprotocol/index.d.ts
