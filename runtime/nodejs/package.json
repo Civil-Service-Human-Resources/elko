@@ -1,0 +1,33 @@
+{
+	"author": "tav <tav@espians.com>",
+	"bin": {
+		"run-nodejs-service": "./bin/run-nodejs-service"
+	},
+	"dependencies": {
+		"highwayhash": "2.2.0",
+		"long": "3.2.0",
+		"promise-socket": "2.0.2",
+		"protobufjs": "6.8.4"
+	},
+	"description": "NodeJS runtime for Elko",
+	"devDependencies": {
+		"@types/node": "9.3.0",
+		"tslint": "5.9.1",
+		"typescript": "2.6.2"
+	},
+	"files": ["bin/", "dist/"],
+	"homepage": "https://github.com/tav/elko",
+	"keywords": ["elko", "microservices", "servicemanager"],
+	"license": "SEE LICENSE IN UNLICENSE.md",
+	"name": "elko",
+	"repository": "https://github.com/tav/elko",
+	"scripts": {
+		"build": "./bin/tsc",
+		"clean": "rm -rf ./dist",
+		"lint": "tslint --project tsconfig.json",
+		"postinstall": "mv dist/* .",
+		"prepare": "rm -rf ./dist && ./bin/tsc",
+		"watch": "./bin/tsc --watch"
+	},
+	"version": "0.0.1"
+}
