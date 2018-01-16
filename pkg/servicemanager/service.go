@@ -12,7 +12,6 @@ import (
 
 	"github.com/golang/protobuf/proto"
 
-	"github.com/tav/elko/pkg/op"
 	"github.com/tav/elko/pkg/servicemanager/protocol"
 	"github.com/tav/golly/log"
 )
@@ -34,7 +33,7 @@ func (s *service) close() {
 	s.Unlock()
 }
 
-func (s *service) opcodeError(opcode op.Code, err error) {
+func (s *service) opcodeError(opcode protocol.OP, err error) {
 	log.Errorf("servicemanager: got error decoding %s: %s", opcode, err)
 	s.close()
 }
@@ -69,7 +68,7 @@ func (s *service) read(buf []byte, size int) error {
 func (s *service) heartbeat() {
 }
 
-func (s *service) write(opcode op.Code, msg proto.Message) error {
+func (s *service) write(opcode protocol.OP, msg proto.Message) error {
 	data, err := proto.Marshal(msg)
 	if err != nil {
 		log.Errorf("servicemanager: got error encoding %s: %s", opcode, err)
@@ -86,7 +85,7 @@ func (s *service) write(opcode op.Code, msg proto.Message) error {
 }
 
 func handleService(s *Server, conn net.Conn) {
-	opcode := op.Code(0)
+	opcode := protocol.OP(0)
 	dataBuf := make([]byte, 4096)
 	dataLen := 0
 	headerBuf := make([]byte, 5)
@@ -105,10 +104,10 @@ func handleService(s *Server, conn net.Conn) {
 			log.Error(err)
 			return
 		}
-		opcode = op.Code(headerBuf[0])
+		opcode = protocol.OP(headerBuf[0])
 		if !seen {
-			if opcode != op.ClientHello {
-				log.Errorf("servicemanager: received %s when expecting ClientHello as first message", opcode)
+			if opcode != protocol.OP_CLIENT_HELLO {
+				log.Errorf("servicemanager: received %s when expecting CLIENT_HELLO as first message", opcode)
 				svc.close()
 				return
 			}
@@ -128,9 +127,9 @@ func handleService(s *Server, conn net.Conn) {
 			return
 		}
 		switch opcode {
-		case op.ClientHeartbeat:
+		case protocol.OP_CLIENT_HEARTBEAT:
 			svc.heartbeat()
-		case op.ClientHello:
+		case protocol.OP_CLIENT_HELLO:
 			msg := &protocol.ClientHello{}
 			err := proto.Unmarshal(dataBuf[:dataLen], msg)
 			if err != nil {
@@ -138,27 +137,29 @@ func handleService(s *Server, conn net.Conn) {
 				return
 			}
 			fmt.Println(msg)
-		case op.ClientRequest:
+		case protocol.OP_CLIENT_REQUEST:
 			msg := &protocol.ClientRequest{}
 			err := proto.Unmarshal(dataBuf[:dataLen], msg)
 			if err != nil {
 				svc.opcodeError(opcode, err)
 				return
 			}
-		case op.ClientResponse:
+		case protocol.OP_CLIENT_RESPONSE:
 			msg := &protocol.ClientResponse{}
 			err := proto.Unmarshal(dataBuf[:dataLen], msg)
 			if err != nil {
 				svc.opcodeError(opcode, err)
 				return
 			}
-		case op.ClientShutdown:
+		case protocol.OP_CLIENT_SHUTDOWN:
 			msg := &protocol.ClientShutdown{}
 			err := proto.Unmarshal(dataBuf[:dataLen], msg)
 			if err != nil {
 				svc.opcodeError(opcode, err)
 				return
 			}
+			svc.close()
+			return
 		default:
 			log.Errorf("servicemanager: unknown opcode %d", opcode)
 			svc.close()

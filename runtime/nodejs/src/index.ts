@@ -8,17 +8,6 @@ import * as Long from 'Long'
 import * as net from 'net'
 import {PromiseSocket} from 'promise-socket'
 
-const opcode = {
-	ClientHeartbeat: 1,
-	ClientHello: 2,
-	ClientRequest: 3,
-	ClientResponse: 4,
-	ClientShutdown: 5,
-	ServerHello: 1,
-	ServerRequest: 2,
-	ServerShutdown: 3,
-}
-
 export class Context {
 	id: string
 
@@ -90,7 +79,7 @@ export function run(serviceID: string) {
 		console.log('>> Connecting to Elko ...')
 		await client.write('\x01')
 		write(
-			opcode.ClientHello,
+			proto.OP.CLIENT_HELLO,
 			proto.ClientHello.create({
 				instanceID,
 				serviceID,
@@ -99,6 +88,9 @@ export function run(serviceID: string) {
 		while (true) {
 			const req = await outgoing.pop()
 		}
+	})
+	sock.on('data', data => {
+		console.log('Received:', data)
 	})
 	sock.on('error', msg => {
 		console.log('!! ERROR:', msg)
