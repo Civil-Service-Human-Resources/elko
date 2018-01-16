@@ -6,6 +6,18 @@ syntax = "proto3";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 
+enum OP {
+  IGNORE = 0;
+  CLIENT_HEARTBEAT = 1;
+  CLIENT_HELLO = 2;
+  CLIENT_REQUEST = 3;
+  CLIENT_RESPONSE = 4;
+  CLIENT_SHUTDOWN = 5;
+  SERVER_HELLO = 64;
+  SERVER_REQUEST = 65;
+  SERVER_SHUTDOWN = 66;
+}
+
 enum ErrorCode {
   NONE = 0;
   SERVICE_ERROR = 1;
